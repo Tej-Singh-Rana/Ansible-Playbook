@@ -1,0 +1,19 @@
+---
+  - name: Installation packages
+    hosts: a
+    become: yes
+    remote_user: root
+    tasks:
+       - name: Inslatting mariadb 
+         yum:
+           name: "{{ x }}"
+           state: present
+
+  - name: For second host
+    hosts: b
+    remote_user: root
+    tasks:
+     - name: Update packages
+       yum:
+         update_only: yes
+         state: latest
